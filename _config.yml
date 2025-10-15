@@ -101,6 +101,6 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git
-  repo: git@github.com:gitychzh/test_workflows1.git
-  branch: master
+  type: 
+#   repo: git@github.com:gitychzh/test_workflows1.git
+#   branch: master

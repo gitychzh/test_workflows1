@@ -1,0 +1,43 @@
+name: Hexo Deploy
+
+on:
+  push:
+    branches:
+      - master   # 监听 main 分支提交触发部署
+  workflow_dispatch:  # 支持手动触发
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ 检出源码
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ 设置 Node 环境（你的本地是 22.20.0）
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.20.0
+
+      # 3️⃣ 安装依赖
+      - name: Install dependencies
+        run: |
+          npm install -g hexo-cli
+          npm install
+
+      # 4️⃣ 生成静态文件
+      - name: Build Hexo
+        run: |
+          hexo clean
+          hexo generate
+
+      # 5️⃣ 部署到 gh-pages 分支
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          commit_message: "Auto Deploy: ${{ github.event.head_commit.message }}"
