@@ -1,6 +1,4 @@
 # Hexo Configuration
-## Docs: https://hexo.io/docs/configuration.html
-## Source: https://github.com/hexojs/hexo/
 
 # Site
 title: Hexo
@@ -12,10 +10,10 @@ language: en
 timezone: ''
 
 # URL
-url: https://gitychzh.github.io/test_workflows1
+url: https://gitychzh.github.io
 root: /test_workflows1/
+
 permalink: :year/:month/:day/:title/
-permalink_defaults:
 pretty_urls:
   trailing_index: true
   trailing_html: true
@@ -43,6 +41,7 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+
 syntax_highlighter: highlight.js
 highlight:
   line_number: true
@@ -55,7 +54,7 @@ prismjs:
   line_number: true
   tab_replace: ''
 
-# Home page setting
+# Home page
 index_generator:
   path: ''
   per_page: 10
@@ -66,10 +65,8 @@ default_category: uncategorized
 category_map:
 tag_map:
 
-# Metadata elements
 meta_generator: true
 
-# Date / Time format
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 updated_option: 'mtime'
@@ -78,15 +75,9 @@ updated_option: 'mtime'
 per_page: 10
 pagination_dir: page
 
-# Include / Exclude file(s)
-include:
-exclude:
-ignore:
-
-# Extensions
 theme: landscape
 
-# Deployment (for GitHub Actions build)
+# Deployment (used by GitHub Actions)
 deploy:
   type: git
   repo: https://github.com/gitychzh/test_workflows1.git
