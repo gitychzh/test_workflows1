@@ -86,7 +86,7 @@ ignore:
 # Extensions
 theme: landscape
 
-# Deployment
+# Deployment (for GitHub Actions build)
 deploy:
   type: git
   repo: https://github.com/gitychzh/test_workflows1.git
