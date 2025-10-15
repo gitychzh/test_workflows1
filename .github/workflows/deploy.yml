@@ -1,13 +1,9 @@
-name: Hexo Deploy
+name: Build and Deploy Hexo
 
 on:
   push:
     branches:
       - master
-  workflow_dispatch:
-
-permissions:
-  contents: write
 
 jobs:
   build-deploy:
@@ -22,15 +18,24 @@ jobs:
         with:
           node-version: 22.20.0
 
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-cache
+          restore-keys: |
+            ${{ runner.os }}-npm-cache
+
       - name: Install dependencies
         run: |
-          npm install -g hexo-cli
           npm install
+          npm install hexo-cli -g
+          npm install hexo-deployer-git --save
 
-      - name: Build Hexo
+      - name: Clean and Build Hexo
         run: |
-          hexo clean
-          hexo generate
+          npx hexo clean
+          npx hexo generate
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -38,4 +43,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           publish_branch: gh-pages
-          commit_message: "Auto Deploy: ${{ github.event.head_commit.message }}"
