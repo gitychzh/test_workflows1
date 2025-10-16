@@ -10,8 +10,8 @@ language: en
 timezone: ''
 
 # URL
-url: https://gitychzh.github.io/test_workflows1
-root: /
+url: https://gitychzh.github.io 
+root: /test_workflows1/ #修改ychzh 1,必须这样格式，url+root拼接的
 
 permalink: :year/:month/:day/:title/
 pretty_urls:
