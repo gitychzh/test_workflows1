@@ -11,7 +11,7 @@ timezone: ''
 
 # URL
 url: https://gitychzh.github.io/test_workflows1
-root: /test_workflows1/
+root: /
 
 permalink: :year/:month/:day/:title/
 pretty_urls:
