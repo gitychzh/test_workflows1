@@ -10,7 +10,7 @@ language: en
 timezone: ''
 
 # URL
-url: https://gitychzh.github.io
+url: https://gitychzh.github.io/test_workflows1
 root: /test_workflows1/
 
 permalink: :year/:month/:day/:title/
